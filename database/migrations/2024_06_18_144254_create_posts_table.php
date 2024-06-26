@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->string('title');
             $table->text('content');
-            $table->string('author');
+            $table->string('author')->nullable();
             $table->unsignedSmallInteger('status')->default(1);
             $table->text('description')->nullable();
             $table->string('image_path')->nullable();
