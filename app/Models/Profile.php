@@ -17,13 +17,13 @@ class Profile extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
-    }
-
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasManyThrough(Comment::class, Post::class);
     }
 }

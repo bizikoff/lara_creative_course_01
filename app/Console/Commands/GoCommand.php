@@ -51,6 +51,13 @@ class GoCommand extends Command
         // dd($tag->posts);
         // dd($role->profiles);
 
+        // Many to many through
+
+        // dd($profile->comments);
+        // dd($comment->profile);
+        // dd($category->comments);
+        // dd($comment->category);
+
 
     }
 }

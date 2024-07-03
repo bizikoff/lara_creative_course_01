@@ -2,9 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Profile;
+use App\Models\Role;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +16,39 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $role = Role::firstOrCreate([
+            'title' => 'admin'
+        ]);
+
+        $user = [
+            'name' => 'vlad',
+            'email' => 'vlad@gmail.com',
+            'password' => Hash::make(123123123),
+            'role_id' => $role->id
+        ];
+
+        $user = User::firstOrCreate(
+            [
+                'email' => 'vlad@gmail.com'
+            ],
+            [
+                'name' => $user['name'],
+                'password' => $user['password'],
+                'role_id' => $user['role_id']
+            ]
+        );
+
+        Profile::firstOrCreate([
+            'user_id' => $user->id
+        ]);
+
+
+        $this->call([
+            CategorySeeder::class,
+            TagSeeder::class,
+            PostSeeder::class,
+            CommentSeeder::class,
         ]);
     }
 }

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
 
-            $table->string('login')->unique();
+            $table->string('login')->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->unsignedSmallInteger('gender')->nullable();
@@ -23,7 +23,6 @@ return new class extends Migration
             $table->boolean('is_active')->default(true);
             
             $table->foreignId('user_id')->index()->constrained('users');
-            $table->foreignId('role_id')->index()->constrained('roles');
 
             $table->timestamps();
         });

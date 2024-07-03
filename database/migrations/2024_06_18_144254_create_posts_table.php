@@ -16,11 +16,9 @@ return new class extends Migration
 
             $table->string('title');
             $table->text('content');
-            // $table->string('author')->nullable();  // TO DROP
             $table->unsignedSmallInteger('status')->default(1);
             $table->text('description')->nullable();
             $table->string('image_path')->nullable();
-            $table->string('tag')->nullable();
 
             $table->foreignId('profile_id')->index()->constrained('profiles');
             $table->foreignId('category_id')->index()->constrained('categories');
