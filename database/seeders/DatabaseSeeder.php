@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
 
         $user = User::firstOrCreate(
             [
-                'email' => 'vlad@gmail.com'
+                'email' => $user['email']
             ],
             [
                 'name' => $user['name'],
@@ -41,6 +41,8 @@ class DatabaseSeeder extends Seeder
 
         Profile::firstOrCreate([
             'user_id' => $user->id
+        ], [
+            'login' => 'vladosick'
         ]);
 
 
