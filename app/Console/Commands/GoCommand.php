@@ -33,31 +33,38 @@ class GoCommand extends Command
     public function handle()
     {
         $user = User::find(1);
-        $profile = Profile::find(1);
-        $post = Post::find(1);
-        $comment = Comment::find(1);
-        $category = Category::find(1);
-        $tag = Tag::find(1);
-        $role = Role::find(2);
-
         // dd($user->profiles);
+
+        $profile = Profile::find(1);
         // dd($profile->user);
         // dd($profile->posts);
+        // dd($profile->comments);
+        // dd($profile->likedPosts->toArray());
+        // $profile->likedPosts()->attach([2, 4, 6]);
+        // dd($profile->likedComments->toArray());
+        // $profile->likedComments()->attach([1, 3, 5]);
+
+        $post = Post::find(2);
         // dd($post->comments);
         // dd($post->category);
         // dd($post->tags);
+        // dd($post->likedByProfiles->toArray());
+
+        $comment = Comment::find(1);
         // dd($comment->post);
-        // dd($category->posts);
-        // dd($tag->posts);
-        // dd($role->profiles);
-
-        // Many to many through
-
-        // dd($profile->comments);
         // dd($comment->profile);
-        // dd($category->comments);
         // dd($comment->category);
+        // dd($comment->likedByProfiles->toArray());
 
+        $category = Category::find(1);
+        // dd($category->posts);
+        // dd($category->comments);
+
+        $tag = Tag::find(1);
+        // dd($tag->posts);
+
+        $role = Role::find(2);
+        // dd($role->profiles);
 
     }
 }

@@ -26,4 +26,14 @@ class Profile extends Model
     {
         return $this->hasManyThrough(Comment::class, Post::class);
     }
+
+    public function likedComments()
+    {
+        return $this->morphedByMany(Comment::class, 'likeable');
+    }
+
+    public function likedPosts()
+    {
+        return $this->morphedByMany(Post::class, 'likeable');
+    }
 }

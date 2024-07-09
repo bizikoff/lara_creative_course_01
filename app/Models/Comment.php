@@ -10,7 +10,7 @@ class Comment extends Model
 {
     use HasFactory;
 
-    public function post() 
+    public function post()
     {
         return $this->belongsTo(Post::class);
     }
@@ -22,5 +22,10 @@ class Comment extends Model
     public function category()
     {
         return $this->post->category();
+    }
+
+    public function likedByProfiles()
+    {
+        return $this->morphToMany(Profile::class, 'likeable');
     }
 }

@@ -28,8 +28,13 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    public function comments() 
+    public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function likedByProfiles()
+    {
+        return $this->morphToMany(Profile::class, 'likeable');
     }
 }
