@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Profile;
 use App\Models\Role;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -38,13 +37,6 @@ class DatabaseSeeder extends Seeder
                 'role_id' => $user['role_id']
             ]
         );
-
-        Profile::firstOrCreate([
-            'user_id' => $user->id
-        ], [
-            'login' => 'vladosick'
-        ]);
-
 
         $this->call([
             CategorySeeder::class,
