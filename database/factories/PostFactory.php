@@ -23,6 +23,7 @@ class PostFactory extends Factory
             'content' => fake()->text(),
             'description' => fake()->sentence(15),
             'image_path' => fake()->imageUrl(),
+            'published_at' => fake()->date(),
             'profile_id' => Profile::first()->id,
             'category_id' => Category::inRandomOrder()->first()->id
         ];

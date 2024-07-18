@@ -20,6 +20,7 @@ class StoreRequest extends FormRequest
             'author' => 'nullable|string',
             'status' => 'nullable|integer',
             'description' => 'nullable|string',
+            'published_at' => 'nullable|date_format:Y-m-d',
             'image_path' => 'nullable|string',
             'category' => 'nullable|string',
             'tag' => 'nullable|string',

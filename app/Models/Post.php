@@ -2,10 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Tag;
-use App\Models\Comment;
-use App\Models\Profile;
-use App\Models\Category;
+use App\Models\Traits\HasFilter;
 use App\Observers\PostObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
@@ -17,6 +14,7 @@ class Post extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use HasFilter;
 
     public function category()
     {

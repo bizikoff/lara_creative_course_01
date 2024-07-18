@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedSmallInteger('status')->default(1);
             $table->text('description')->nullable();
             $table->string('image_path')->nullable();
+            $table->date('published_at')->nullable();
 
             $table->foreignId('profile_id')->index()->constrained('profiles');
             $table->foreignId('category_id')->index()->constrained('categories');
