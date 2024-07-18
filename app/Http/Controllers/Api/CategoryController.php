@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\Api\Category\IndexRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,9 +16,11 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(IndexRequest $request)
     {
-        return CategoryResource::collection(Category::all())->resolve();
+        $data = $request->validated();
+        $categories = Category::filter($data)->get();
+        return CategoryResource::collection($categories)->resolve();
     }
 
     /**
