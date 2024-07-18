@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\Role\IndexRequest;
 use App\Http\Requests\Api\Role\StoreRequest;
 use App\Http\Requests\Api\Role\UpdateRequest;
 use App\Http\Resources\Role\RoleResource;
@@ -15,9 +16,11 @@ class RoleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(IndexRequest $request)
     {
-        return RoleResource::collection(Role::all())->resolve();
+        $data = $request->validated();
+        $roles = Role::filter($data)->get();
+        return RoleResource::collection($roles)->resolve();
     }
 
     /**
