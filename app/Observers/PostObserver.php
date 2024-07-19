@@ -2,9 +2,6 @@
 
 namespace App\Observers;
 
-use App\Events\Log\LogEndEvent;
-use App\Events\Log\LogStartEvent;
-use App\Models\Log;
 use App\Models\Post;
 
 class PostObserver
@@ -14,7 +11,7 @@ class PostObserver
      */
     public function created(Post $post): void
     {
-        // 
+        //
     }
 
     /**

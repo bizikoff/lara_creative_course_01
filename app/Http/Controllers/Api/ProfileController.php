@@ -8,7 +8,6 @@ use App\Http\Requests\Api\Profile\StoreRequest;
 use App\Http\Requests\Api\Profile\UpdateRequest;
 use App\Http\Resources\Profile\ProfileResource;
 use App\Models\Profile;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class ProfileController extends Controller

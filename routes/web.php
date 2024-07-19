@@ -7,7 +7,6 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
-use Illuminate\Foundation\Console\UpCommand;
 
 Route::get('/', function () {
     return view('welcome');

@@ -15,27 +15,27 @@ class PostFilter extends AbstractFilter
         'category_title',
     ];
 
-    protected function title(Builder $builder, $value)
+    protected function title(Builder $builder, $value): void
     {
         $builder->where('title', 'ilike', "%$value%");
     }
 
-    protected function content(Builder $builder, $value)
+    protected function content(Builder $builder, $value): void
     {
         $builder->where('content', 'ilike', "%$value%");
     }
 
-    protected function publishedAtFrom(Builder $builder, $value)
+    protected function publishedAtFrom(Builder $builder, $value): void
     {
         $builder->where('published_at', '>=', "%$value%");
     }
 
-    protected function publishedAtTo(Builder $builder, $value)
+    protected function publishedAtTo(Builder $builder, $value): void
     {
         $builder->where('published_at', '<=', "%$value%");
     }
 
-    protected function categoryTitle(Builder $builder, $value)
+    protected function categoryTitle(Builder $builder, $value): void
     {
         $builder->whereRelation('category', 'title', 'ilike', "%$value%");
     }

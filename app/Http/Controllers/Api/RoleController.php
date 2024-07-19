@@ -8,7 +8,6 @@ use App\Http\Requests\Api\Role\StoreRequest;
 use App\Http\Requests\Api\Role\UpdateRequest;
 use App\Http\Resources\Role\RoleResource;
 use App\Models\Role;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class RoleController extends Controller

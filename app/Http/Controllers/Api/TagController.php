@@ -8,7 +8,6 @@ use App\Http\Requests\Api\Tag\StoreRequest;
 use App\Http\Requests\Api\Tag\UpdateRequest;
 use App\Http\Resources\Tag\TagResource;
 use App\Models\Tag;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class TagController extends Controller
