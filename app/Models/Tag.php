@@ -12,10 +12,6 @@ class Tag extends Model
     use HasFactory;
     use HasFilter;
 
-    public static function filter(mixed $data)
-    {
-    }
-
     public function posts(): BelongsToMany
     {
         return $this->belongsToMany(Post::class);

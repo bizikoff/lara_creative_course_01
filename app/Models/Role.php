@@ -12,11 +12,6 @@ class Role extends Model
     use HasFactory;
     use HasFilter;
 
-
-    public static function filter(mixed $data)
-    {
-    }
-
     public function users(): HasMany
     {
         return $this->hasMany(User::class);

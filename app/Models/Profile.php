@@ -15,10 +15,6 @@ class Profile extends Model
     use HasFactory;
     use HasFilter;
 
-    public static function filter(mixed $data)
-    {
-    }
-
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

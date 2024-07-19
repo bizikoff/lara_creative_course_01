@@ -13,10 +13,6 @@ class Comment extends Model
     use HasFactory;
     use HasFilter;
 
-    public static function filter(mixed $data)
-    {
-    }
-
     public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class);

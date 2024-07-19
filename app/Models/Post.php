@@ -20,10 +20,6 @@ class Post extends Model
     use SoftDeletes;
     use HasFilter;
 
-    public static function filter(mixed $data)
-    {
-    }
-
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id');

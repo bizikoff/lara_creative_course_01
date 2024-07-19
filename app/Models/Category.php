@@ -13,10 +13,6 @@ class Category extends Model
     use HasFactory;
     use HasFilter;
 
-    public static function filter(mixed $data)
-    {
-    }
-
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
