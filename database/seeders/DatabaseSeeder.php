@@ -24,7 +24,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'vlad',
             'email' => 'vlad@gmail.com',
             'password' => Hash::make(123123123),
-            'role_id' => $role->id
         ];
 
         $user = User::firstOrCreate(
@@ -34,9 +33,9 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => $user['name'],
                 'password' => $user['password'],
-                'role_id' => $user['role_id']
             ]
         );
+        $user->roles()->sync([$role->id]);
 
         $this->call([
             CategorySeeder::class,

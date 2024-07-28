@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Traits\HasFilter;
 use App\Observers\PostObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,6 +15,9 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 #[ObservedBy(PostObserver::class)]
+///**
+// * @mixin Builder
+// */
 class Post extends Model
 {
     use HasFactory;

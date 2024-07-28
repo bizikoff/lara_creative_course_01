@@ -5,15 +5,15 @@ namespace App\Models;
 use App\Models\Traits\HasFilter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Role extends Model
 {
     use HasFactory;
     use HasFilter;
 
-    public function users(): HasMany
+    public function users(): belongsToMany
     {
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(User::class);
     }
 }

@@ -36,19 +36,19 @@ class GoCommand extends Command
         // dd($user->profiles);
 
         $profile = Profile::find(1);
-        // dd($profile->user);
-        // dd($profile->posts);
-        // dd($profile->comments);
+
         // dd($profile->likedPosts->toArray());
         // $profile->likedPosts()->attach([2, 4, 6]);
         // dd($profile->likedComments->toArray());
         // $profile->likedComments()->attach([1, 3, 5]);
 
         $post = Post::find(2);
-        // dd($post->comments);
-        // dd($post->category);
-        // dd($post->tags);
-        // dd($post->likedByProfiles->toArray());
+//        dd($post->profile);
+//        dd($post->comments);
+//        dd($post->tags);
+//        dd($post->category);
+//        dd($post->likedByProfiles->toArray());
+
 
         $comment = Comment::find(1);
         // dd($comment->post);

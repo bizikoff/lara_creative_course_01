@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\PostController;
@@ -13,11 +14,17 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::apiResources([
-    'categories' => CategoryController::class,
-    'comments' => CommentController::class,
-    'posts' => PostController::class,
-    'profiles' => ProfileController::class,
-    'roles' => RoleController::class,
-    'tags' => TagController::class,
-]);
+Route::apiResource('posts', PostController::class)->middleware('jwt.auth');
+Route::apiResource('categories', CategoryController::class);
+Route::apiResource('tags', TagController::class);
+Route::apiResource('comments', CommentController::class);
+Route::apiResource('roles', RoleController::class);
+Route::apiResource('profiles', ProfileController::class);
+
+
+Route::post('auth/login', [AuthController::class, 'login']);
+Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('refresh', [AuthController::class, 'refresh']);
+    Route::post('me', [AuthController::class, 'me']);
+});
