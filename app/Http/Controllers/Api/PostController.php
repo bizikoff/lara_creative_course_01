@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Exceptions\PostException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Post\IndexRequest;
 use App\Http\Requests\Api\Post\StoreRequest;
 use App\Http\Requests\Api\Post\UpdateRequest;
 use App\Http\Resources\Post\PostResource;
 use App\Models\Post;
+use App\Services\PostService;
 use Illuminate\Http\Response;
+use function Termwind\render;
 
 class PostController extends Controller
 {
@@ -35,9 +38,15 @@ class PostController extends Controller
 
     /**
      * Display the specified resource.
+     * @throws PostException - (checkIfExists) - статичный метод созданный для проверки
+     * существования поста
      */
     public function show(Post $post)
     {
+        $post = PostService::firstOrCreate();
+
+        PostException::checkIfExists($post);
+
         return PostResource::make($post)->resolve();
     }
 

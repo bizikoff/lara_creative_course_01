@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Post;
+use Illuminate\Support\Facades\Log;
 
 class PostObserver
 {
@@ -11,7 +12,7 @@ class PostObserver
      */
     public function created(Post $post): void
     {
-        //
+        Log::channel('post')->info('Post was created', ['post' => $post]);
     }
 
     /**
@@ -19,7 +20,7 @@ class PostObserver
      */
     public function updated(Post $post): void
     {
-        //
+        Log::channel('post')->info('Post was updated', ['post' => $post]);
     }
 
     /**
@@ -27,7 +28,7 @@ class PostObserver
      */
     public function deleted(Post $post): void
     {
-        //
+        Log::channel('post')->info('Post was deleted', ['post' => $post]);
     }
 
     /**

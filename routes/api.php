@@ -15,8 +15,9 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::apiResource('posts', PostController::class)->middleware(['jwt.auth',
-    IsAdminMiddleware::class]);
+Route::apiResource('posts', PostController::class);
+//    ->middleware(['jwt.auth',
+//    IsAdminMiddleware::class]);
 Route::apiResource('categories', CategoryController::class);
 Route::apiResource('tags', TagController::class);
 Route::apiResource('comments', CommentController::class);

@@ -18,15 +18,9 @@ class StoreRequest extends FormRequest
         return [
             'title' => 'required|string',
             'content' => 'required|string',
-            'author' => 'nullable|string',
-            'status' => 'nullable|integer',
-            'description' => 'nullable|string',
-            'published_at' => 'nullable|date_format:Y-m-d',
-            'image_path' => 'nullable|string',
-            'category' => 'nullable|string',
-            'tag' => 'nullable|string',
+            'category_id' => 'required|exists:categories,id',
+            'profile_id' => 'required|exists:profiles,id',
         ];
     }
 }
-
 

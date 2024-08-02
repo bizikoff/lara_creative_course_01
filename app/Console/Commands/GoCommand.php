@@ -10,6 +10,7 @@ use App\Models\Profile;
 use App\Models\Category;
 use App\Models\Role;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class GoCommand extends Command
 {
@@ -32,39 +33,8 @@ class GoCommand extends Command
      */
     public function handle()
     {
-        $user = User::find(1);
-        // dd($user->profiles);
-
-        $profile = Profile::find(1);
-
-        // dd($profile->likedPosts->toArray());
-        // $profile->likedPosts()->attach([2, 4, 6]);
-        // dd($profile->likedComments->toArray());
-        // $profile->likedComments()->attach([1, 3, 5]);
-
-        $post = Post::find(2);
-//        dd($post->profile);
-//        dd($post->comments);
-//        dd($post->tags);
-//        dd($post->category);
-//        dd($post->likedByProfiles->toArray());
-
-
-        $comment = Comment::find(1);
-        // dd($comment->post);
-        // dd($comment->profile);
-        // dd($comment->category);
-        // dd($comment->likedByProfiles->toArray());
-
-        $category = Category::find(1);
-        // dd($category->posts);
-        // dd($category->comments);
-
-        $tag = Tag::find(1);
-        // dd($tag->posts);
-
-        $role = Role::find(2);
-        // dd($role->profiles);
-
+        $post = Post::factory()->create();
+        Log::channel('post')->info('Post created', [$post]);
+        $this->info('Command was executed');
     }
 }
