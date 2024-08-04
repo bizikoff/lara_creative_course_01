@@ -11,7 +11,6 @@ use App\Http\Resources\Post\PostResource;
 use App\Models\Post;
 use App\Services\PostService;
 use Illuminate\Http\Response;
-use function Termwind\render;
 
 class PostController extends Controller
 {

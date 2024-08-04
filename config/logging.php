@@ -1,5 +1,6 @@
 <?php
 
+use App\LoggerFormatters\PostLoggerFormatter;
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
@@ -129,7 +130,7 @@ return [
 
         'post' => [
             'driver' => 'single',
-            'tap' => [\App\LoggerFormatters\PostLoggerFormatter::class],
+            'tap' => [PostLoggerFormatter::class],
             'path' => storage_path('logs/post.log'),
         ],
 
