@@ -6,8 +6,6 @@ use App\Http\Requests\Post\StoreRequest;
 use App\Http\Requests\Post\UpdateRequest;
 use App\Http\Resources\Post\PostResource;
 use App\Models\Post;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class PostController extends Controller
 {
@@ -16,7 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        
+        $posts = PostResource::collection(Post::all())->resolve();
+        return inertia('Post/Index', compact(['posts']));
     }
 
     /**
@@ -24,7 +23,7 @@ class PostController extends Controller
      */
     public function create()
     {
-
+        return inertia('Post/Create');
     }
 
     /**
@@ -32,7 +31,11 @@ class PostController extends Controller
      */
     public function store(StoreRequest $request)
     {
-
+        $data = $request->validated();
+        $data['profile_id'] = 1;
+        $data['category_id'] = 1;
+        $post = Post::create($data);
+        return $post;
     }
 
     /**
@@ -40,7 +43,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        
+
     }
 
     /**
@@ -56,7 +59,7 @@ class PostController extends Controller
      */
     public function update(UpdateRequest $request, Post $post)
     {
-        
+
     }
 
     /**

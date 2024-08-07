@@ -31,7 +31,7 @@ class PostException extends Exception
      */
     public function report(): void
     {
-        Log::channel('post')->info('Post already exists:', [$this->post]);
+        Log::channel('post')->info($this->getMessage(), [$this->post]);
     }
 
     /**
@@ -40,8 +40,8 @@ class PostException extends Exception
     public function render(Request $request): Response
     {
         return response([
-            'message' => $this->message
-        ], $this->code);
+            'message' => $this->getMessage()
+        ], $this->getCode());
     }
 
     /**
@@ -53,6 +53,24 @@ class PostException extends Exception
     {
         if(!$post->wasRecentlyCreated) {
             throw new PostException('Post already exists.', 200, $post);
+        }
+    }
+
+    /**
+     * @throws PostException
+     */
+    public static function checkOnChanges(array $data, Post $post): void
+    {
+        $changed = false;
+
+        foreach ($data as $attribute => $value) {
+            if($post->getAttribute($attribute) != $value) {
+                $changed = true;
+                break;
+            }
+        }
+        if(!$changed){
+            throw new PostException('No changes made', 200, $post);
         }
     }
 }

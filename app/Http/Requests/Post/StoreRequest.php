@@ -17,13 +17,6 @@ class StoreRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'content' => 'required|string',
-            'author' => 'nullable|string',
-            'status' => 'nullable|integer',
-            'description' => 'nullable|string',
-            'image_path' => 'nullable|string',
-            'category' => 'nullable|string',
-            'tag' => 'nullable|string',
         ];
     }
 }

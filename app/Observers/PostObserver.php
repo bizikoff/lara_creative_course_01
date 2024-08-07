@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Log;
 class PostObserver
 {
     /**
-     * Handle the logging for event
+     * Handle a logging for the event
      *
      * $logContent - сообщение которое передается в файл .log
      *   storage_path - вспомогательная функция Laravel, которая возвращает абсолютный путь к
@@ -80,16 +80,4 @@ class PostObserver
         $this->eventLogging('restored', $post);
     }
 
-    /**
-     * Handle the Post "force deleted" event.
-     */
-    public function forceDeleted(Post $post): void
-    {
-        //
-    }
-
-    private function logEvent($event, Post $post)
-    {
-
-    }
 }
