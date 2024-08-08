@@ -1,6 +1,12 @@
 <script>
+import {Link} from "@inertiajs/vue3";
+import AdminLayout from '@/Layouts/AdminLayout.vue'
 export default {
     name: "Create",
+    components: {
+        AdminLayout,
+        Link
+    },
     data() {
         return {
             post: {}
@@ -19,21 +25,29 @@ export default {
 </script>
 
 <template>
-    <div class="w-2/3 mx-auto">
-        <div class="my-2">
-            <input class="w-full shadow-sm border-0 border-b border-gray-300"
-                   type="text"
-                   v-model="post.title"
-                   placeholder="Title...">
+    <AdminLayout>
+
+        <div class="w-[75%] mx-auto">
+            <div class="mb-2">
+                <input class="w-full shadow-sm border-0 border-b border-gray-300 rounded"
+                       type="text"
+                       v-model="post.title"
+                       placeholder="Title...">
+            </div>
+            <div class="">
+                <a href="#"
+                   @click.prevent="storePost"
+                   class="btn">
+                    Add
+                </a>
+                <Link
+                    class="btn-red inline-block ml-4"
+                    :href="route('posts.index')">
+                    Back
+                </Link>
+            </div>
         </div>
-        <div class="my-4">
-            <a href="#"
-               @click.prevent="storePost"
-               class="py-2 px-4 bg-indigo-600 rounded shadow-sm uppercase text-white cursor-pointer">
-                Add
-            </a>
-        </div>
-    </div>
+    </AdminLayout>
 </template>
 
 <style scoped>

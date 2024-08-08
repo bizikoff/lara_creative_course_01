@@ -18,7 +18,8 @@ class CommentResource extends JsonResource
             'id' => $this->id,
             'comment_to' => $this->post->title,
             'content' => $this->content,
-            'author' => $this->profile->login
+            'author' => $this->profile->login,
+            'created_at' => $this->created_at->diffForHumans(),
         ];
     }
 }

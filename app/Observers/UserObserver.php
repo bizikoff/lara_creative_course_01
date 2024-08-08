@@ -12,7 +12,7 @@ class UserObserver
     public function created(User $user): void
     {
         $user->profile()->create([
-            'login' => 'vladosick'
+            'login' => 'vlad'
         ]);
     }
 

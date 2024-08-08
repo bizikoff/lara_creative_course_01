@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Comment\CommentResource;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $comments = CommentResource::collection(Comment::all())->resolve();
+        return inertia('Comment/Index', compact('comments'));
     }
 
     /**

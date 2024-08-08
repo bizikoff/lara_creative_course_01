@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TagController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -26,6 +30,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::resource('/posts', PostController::class);
+Route::resource('/comments', CommentController::class);
+Route::resource('/categories', CategoryController::class);
+Route::resource('/roles', RoleController::class);
+Route::resource('/tags', TagController::class);
 
 require __DIR__.'/auth.php';

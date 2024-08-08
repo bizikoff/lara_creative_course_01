@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\Role\RoleResource;
-use App\Models\Role;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 
-class RoleController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $roles = RoleResource::collection(Role::all())->resolve();
-        return inertia('Role/Index', compact('roles'));
+        return inertia("Admin");
     }
 
     /**
@@ -36,7 +34,7 @@ class RoleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Role $role)
+    public function show(Admin $admin)
     {
         //
     }
@@ -44,7 +42,7 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Role $role)
+    public function edit(Admin $admin)
     {
         //
     }
@@ -52,7 +50,7 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request, Admin $admin)
     {
         //
     }
@@ -60,7 +58,7 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Role $role)
+    public function destroy(Admin $admin)
     {
         //
     }

@@ -1,9 +1,12 @@
 <script>
 import {Link} from "@inertiajs/vue3";
+import AdminLayout from "../../Layouts/AdminLayout.vue";
+
 export default {
     name: "Index",
     components: {
-        Link
+        Link,
+        AdminLayout
     },
     props: {
         posts: Array
@@ -11,7 +14,7 @@ export default {
     data() {
         return {
             person: {
-                name: "vasya",
+                name: "vladymir",
                 age: 24
             }
         }
@@ -25,20 +28,19 @@ export default {
 </script>
 
 <template>
-    <div class="w-2/3 mx-auto">
-        <div class="my-4">
-            <Link class="py-2 px-4 bg-indigo-600 rounded shadow-sm uppercase text-white"
-               :href="route('posts.create')">
-                Create a new post
-            </Link>
-        </div>
-        <div>
-            <div v-for="post in posts" class="pt-2 mb-4 border-b border-gray-300 shadow-sm">
-                <h3>{{ post.title }}</h3>
-                <p>{{ post.published_at }}</p>
+    <AdminLayout>
+        <section>
+            <div class="mb-4">
+                <Link :href="route('posts.create')" class="btn">Create new post</Link>
             </div>
-        </div>
-    </div>
+            <div v-for="post in posts">
+                <div class="mb-2 bg-white shadow p-2 rounded-md">
+                    <h3 class="text-lg font-bold">{{post.title}}</h3>
+                    <p class="text-sm font-light">{{post.published_at}}</p>
+                </div>
+            </div>
+        </section>
+    </AdminLayout>
 </template>
 
 <style scoped>
